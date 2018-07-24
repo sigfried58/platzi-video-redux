@@ -6,6 +6,10 @@ const handleSubmit = event => {
   const data = new FormData(form);
   const title = data.get('title');
   console.log(title);
+  store.dispatch({
+    type: 'ADD_SONG',
+    payload: { title }
+  });
 };
 
 const form = document.getElementById('form');
