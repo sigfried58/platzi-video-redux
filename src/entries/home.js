@@ -2,10 +2,13 @@ import React from 'react';
 import { render } from 'react-dom';
 import Home from '../pages/containers/home';
 import data from '../api.json';
+import normalizedData from '../schemas/index.js';
 
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import reducer from '../reducers/data';
+
+console.log(normalizedData);
 
 const initialState = {
   data: {
