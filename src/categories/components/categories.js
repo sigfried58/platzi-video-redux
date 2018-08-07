@@ -8,6 +8,7 @@ function Categories(props) {
   return (
     <div className="Categories">
       <Search />
+      {props.isLoading && <p>Buscando tus videos favoritos...</p>}
       {props.search.map(item => {
         return (
           <Media
