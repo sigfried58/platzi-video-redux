@@ -9,19 +9,21 @@ import { createStore, applyMiddleware } from 'redux';
 import reducer from '../reducers/index';
 
 import { Map as map } from 'immutable';
+import logger from 'redux-logger';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
-const logger = ({ dispatch, getState }) => next => action => {
-  console.log('estado anterior:', getState().toJS());
-  console.log('enviando acción:', action);
-  const result = next(action);
-  console.log('nuevo estado   :', getState().toJS());
-  return result;
-};
+// const logger = ({ dispatch, getState }) => next => action => {
+//   console.log('estado anterior:', getState().toJS());
+//   console.log('enviando acción:', action);
+//   const result = next(action);
+//   console.log('nuevo estado   :', getState().toJS());
+//   return result;
+// };
 
 const store = createStore(
   reducer,
   map(),
-  applyMiddleware(logger)
+  composeWithDevTools(applyMiddleware(logger))
   // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
